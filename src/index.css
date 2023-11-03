@@ -6,6 +6,14 @@ body{
   background-color: #FAFBFC;
 }
 
+.background-header {
+  background-image: url('/rectangle.jpg');
+  background-size: cover;
+}
+.background-header::before {
+  filter: brightness(50%);
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
