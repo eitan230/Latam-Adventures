@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../validations/LoginValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -24,11 +25,11 @@ const Login = () => {
           alt="Logo de Latam Adventures"
           className="w-[100px] mb-10"
         />
-        <h2 className="font-bold text-3xl mb-2">Inicio de Sesion</h2>
-        <p className="text-sm mb-3">Ingresa a tu cuenta de Latam Adventures</p>
+        <h2 className="font-bold text-3xl mb-4">Inicio de Sesion</h2>
+        <p className="text-sm mb-8">Ingresa a tu cuenta de Latam Adventures</p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
-          <legend className="flex flex-col mb-2">
+          <legend className="flex flex-col mb-4">
             <label htmlFor="email" className="text-xs">
               Email
             </label>
@@ -46,7 +47,7 @@ const Login = () => {
               {errors?.email?.message}
             </p>
           </legend>
-          <legend className="flex flex-col mb-4">
+          <legend className="flex flex-col mb-5">
             <label htmlFor="password" className="text-xs">
               Contraseña
             </label>
@@ -64,6 +65,7 @@ const Login = () => {
               {errors?.password?.message}
             </p>
           </legend>
+          <Link to="/forgotpassword" className="text-xs text-end mb-6 text-red-400 font-semibold">¿Olvidaste tu contraseña?</Link>
           <button className="bg-[#8DD3BB] text-xs font-bold py-2 rounded-sm">
             Iniciar Sesion
           </button>
