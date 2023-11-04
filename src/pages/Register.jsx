@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../validations/RegisterValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const {
@@ -27,11 +28,8 @@ const Register = () => {
     <div className="flex m-14 gap-5 justify-center content-center">
       <img src="/registerPicture.svg" alt="" />
       <div>
-        <img
-          src="/latamLogo.svg"
-          alt="Logo de Latam Adventures"
-          className="w-[100px] mb-10"
-        />
+      <Link to="/" className="w-[100px] h-[30px] mb-10" ><img src="/latamLogo.svg" alt="Logo de Latam Adventures" className="w-[100px] h-[30px] mb-10"/>
+        </Link>
         <h2 className="font-bold text-3xl mb-2">Registro</h2>
         <p className="text-sm mb-3">Crea tu cuenta para tu próxima aventura</p>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -129,9 +127,7 @@ const Register = () => {
           </button>
           <p className="text-xs text-center mt-3">
             ¿Ya tienes cuenta?{" "}
-            <a href="#" className="text-red-400 font-semibold ">
-              Iniciar Sesión
-            </a>{" "}
+            <Link to="/login" className="text-red-400 font-semibold">Iniciar Sesión</Link>
           </p>
         </form>
       </div>

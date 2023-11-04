@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../validations/LoginValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const {
@@ -19,16 +20,13 @@ const Login = () => {
   return (
     <div className="flex m-14 gap-5 justify-center content-center">
       <div className="flex flex-col">
-        <img
-          src="/latamLogo.svg"
-          alt="Logo de Latam Adventures"
-          className="w-[100px] mb-10"
-        />
-        <h2 className="font-bold text-3xl mb-2">Inicio de Sesion</h2>
-        <p className="text-sm mb-3">Ingresa a tu cuenta de Latam Adventures</p>
+        <Link to="/" className="w-[100px] h-[30px] mb-10" ><img src="/latamLogo.svg" alt="Logo de Latam Adventures" className="w-[100px] h-[30px] "/>
+        </Link>
+        <h2 className="font-bold text-3xl mb-4">Inicio de Sesion</h2>
+        <p className="text-sm mb-8">Ingresa a tu cuenta de Latam Adventures</p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
-          <legend className="flex flex-col mb-2">
+          <legend className="flex flex-col mb-4">
             <label htmlFor="email" className="text-xs">
               Email
             </label>
@@ -46,7 +44,7 @@ const Login = () => {
               {errors?.email?.message}
             </p>
           </legend>
-          <legend className="flex flex-col mb-4">
+          <legend className="flex flex-col mb-5">
             <label htmlFor="password" className="text-xs">
               Contraseña
             </label>
@@ -64,14 +62,13 @@ const Login = () => {
               {errors?.password?.message}
             </p>
           </legend>
+          <Link to="/forgotpassword" className="text-xs text-end mb-6 text-red-400 font-semibold">¿Olvidaste tu contraseña?</Link>
           <button className="bg-[#8DD3BB] text-xs font-bold py-2 rounded-sm">
             Iniciar Sesion
           </button>
           <p className="text-xs text-center mt-2">
             ¡No tienes una cuenta?{" "}
-            <a href="#" className="text-red-400 font-semibold ">
-              Registrate
-            </a>{" "}
+            <Link to="/register" className="text-red-400 font-semibold ">Registrate</Link>          
           </p>
         </form>
       </div>
