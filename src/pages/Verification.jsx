@@ -15,11 +15,8 @@ const Verification = () => {
   return (
     <div className="flex m-14 gap-16 justify-center content-center">
       <div className="flex flex-col">
-        <img
-          src="/latamLogo.svg"
-          alt="Logo de Latam Adventures"
-          className="w-[100px] mb-10"
-        />
+      <Link to="/" className="w-[100px] h-[30px] mb-10" ><img src="/latamLogo.svg" alt="Logo de Latam Adventures" className="w-[100px] h-[30px] "/>
+        </Link>
         <Link to="/login" className="flex flex-row pl-1 font-semibold pb-5"><img src="/flecha.svg" className="pr-3" alt="" /> Iniciar Sesion</Link>
         <h2 className="font-bold text-3xl mb-4">Verificación</h2>
         <p className="text-sm mb-8">Hemos enviado un código a tu correo.</p>

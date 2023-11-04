@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 const CreateNewPass = () => {
   const {
@@ -14,11 +15,8 @@ const CreateNewPass = () => {
   return (
     <div className="flex m-14 gap-16 justify-center content-center">
       <div className="flex flex-col">
-        <img
-          src="/latamLogo.svg"
-          alt="Logo de Latam Adventures"
-          className="w-[100px] mb-10"
-        />
+      <Link to="/" className="w-[100px] h-[30px] mb-10" ><img src="/latamLogo.svg" alt="Logo de Latam Adventures" className="w-[100px] h-[30px] "/>
+        </Link>
         <h2 className="font-bold text-3xl mb-10">Crea una nueva <br/> contraseña</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
