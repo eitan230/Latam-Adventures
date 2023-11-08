@@ -13,9 +13,25 @@ const Register = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('https://tribbolabtravel-production.up.railway.app/auth/registro ', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        console.log(response.status)
+      } else {
+        console.log(errors)
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
 
   const stylesFirstInputs = ` w-64 border-[1px] px-3 py-2 text-xs border-[#79747E] rounded-sm bg-transparent outline-0 ${
     errors.password ? "outline-1 outline-red-600 border-2 border-red-600" : ""
