@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginSchema } from "../validations/LoginValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const {
@@ -13,8 +14,36 @@ const Login = () => {
     resolver: yupResolver(loginSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const { authenticated, login, logout } = useAuth();
+  
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('https://tribbolabtravel-production.up.railway.app/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        // El inicio de sesión fue exitoso
+        const data = await response.json();
+        console.log('Usuario autenticado:', data);
+        alert("Inicio de sesion exitoso")
+        login()
+        localStorage.setItem('authenticated', 'true');
+        navigate('/')
+      } else {
+        // El inicio de sesión falló
+        console.error('Error al iniciar sesión');
+        alert("Dirección de email o contraseña incorrectas. Vuelve a intentarlo o crea una cuenta.")
+      }
+    } catch (error) {
+      console.error('Error al realizar la solicitud:', error);
+    }
   };
 
   return (
@@ -24,33 +53,34 @@ const Login = () => {
         </Link>
         <h2 className="font-bold text-3xl mb-4">Inicio de Sesion</h2>
         <p className="text-sm mb-8">Ingresa a tu cuenta de Latam Adventures</p>
-
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col ">
-          <legend className="flex flex-col mb-4">
-            <label htmlFor="email" className="text-xs">
+          <legend className="flex flex-col mb-4 relative">
+            <label htmlFor="username" className={`text-xs absolute ${errors.username && errors.password ? "bottom-[45px]" : "bottom-[25px]"} ${errors.username ? "bottom-[45px]" : "bottom-[25px]"} left-2 bg-[#FAFBFC;] px-1`}>
               Email
             </label>
             <input
               type="text"
-              name="email"
+              name="username"
+              id="username"
               className={`w-80 border-[1px] px-3 py-2 text-xs border-[#79747E] rounded-sm bg-transparent outline-0  ${
-                errors.email
+                errors.username
                   ? "outline-1 outline-red-600 border-2 border-red-600"
                   : ""
               }  `}
-              {...register("email")}
+              {...register("username")}
             />
             <p className="text-red-600 text-sm font-bold">
-              {errors?.email?.message}
+              {errors?.username?.message}
             </p>
           </legend>
-          <legend className="flex flex-col mb-5">
-            <label htmlFor="password" className="text-xs">
+          <legend className="flex flex-col mb-5 relative">
+            <label htmlFor="password" className={`text-xs absolute ${errors.username && errors.password ? "bottom-[45px]" : "bottom-[25px]"} ${errors.password ? "bottom-[45px]" : "bottom-[25px]"} left-2 bg-[#FAFBFC;] px-1`}>
               Contraseña
             </label>
             <input
               type="text"
               name="password"
+              id="password"
               className={` w-80 border-[1px] px-3 py-2 text-xs border-[#79747E] rounded-sm bg-transparent outline-0 ${
                 errors.password
                   ? "outline-1 outline-red-600 border-2 border-red-600"
@@ -62,7 +92,7 @@ const Login = () => {
               {errors?.password?.message}
             </p>
           </legend>
-          <Link to="/forgotpassword" className="text-xs text-end mb-6 text-red-400 font-semibold">¿Olvidaste tu contraseña?</Link>
+          {/* <Link to="/forgotpassword" className="text-xs text-end mb-6 text-red-400 font-semibold">¿Olvidaste tu contraseña?</Link> */}
           <button className="bg-[#8DD3BB] text-xs font-bold py-2 rounded-sm">
             Iniciar Sesion
           </button>
