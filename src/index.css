@@ -14,6 +14,16 @@ body{
   filter: brightness(50%);
 }
 
+.background-flight {
+  background-image: url('/flight.jpg');
+  background-size: cover;
+}
+
+.background-planes {
+  background-image: url('/planes.jpg');
+  background-size: cover;
+}
+
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
