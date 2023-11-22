@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { registerSchema } from "../validations/RegisterValidation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -14,6 +14,8 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
+
+  const navigate = useNavigate();
 
 
   const onSubmit = async (data) => {
@@ -29,7 +31,8 @@ const Register = () => {
 
        if (response.ok) {
          console.log(response.status)
-         alert("Registro exitoso")
+         alert("Registro exitoso, ahora debes iniciar sesion")
+         navigate('/login')
        } else {
          alert("El mail ingresado ya esta en uso")
          console.log('Response no OK', errors)
