@@ -7,6 +7,7 @@ import Verification from './pages/Verification'
 import ForgotPassword from './pages/ForgotPassword'
 import CreateNewPass from './pages/CreateNewPass'
 import SearchHotel from './pages/SearchHotel'
+import SearchFlight from './pages/SearchFlight'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route exact path="/forgotpassword" element={<ForgotPassword/>} />
         <Route exact path="/newPassword" element={<CreateNewPass/>} />
         <Route exact path="/hotels" element={<SearchHotel/>} />
+        <Route exact path="/flights" element={<SearchFlight/>} />
     </Routes>
     </>
     

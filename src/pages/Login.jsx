@@ -31,10 +31,12 @@ const Login = () => {
       if (response.ok) {
         // El inicio de sesión fue exitoso
         const data = await response.json();
+
         console.log('Usuario autenticado:', data);
         alert("Inicio de sesion exitoso")
         login()
         localStorage.setItem('authenticated', 'true');
+        localStorage.setItem('nombreUsuario', JSON.stringify(data.nombre));
         navigate('/')
       } else {
         // El inicio de sesión falló

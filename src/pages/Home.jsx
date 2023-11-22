@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavHeader from "../components/NavHeader"
 import TripsComponent from "../components/TripsComponent";
 import { places } from "../constants/TripsInfo.js"
-import Newsletter from "../components/Newsletter.jsx";
 import Footer from "../components/Footer.jsx";
 import Navbar from "../components/Navbar.jsx";
+import FlightsNav from "../components/FlightsNav"
 
 const Home = () => {
+
+  useEffect(() => {
+    localStorage.removeItem('vueloBuscar')
+  }, [])
+  
+
   return (
     <div className="flex flex-col pt-6">
       <div className="flex flex-col items-center relative">
         <NavHeader/>
+      </div>
+      <div className="flex flex-col items-center">
+        <FlightsNav></FlightsNav>
       </div>
       
       {/* <div className="flex gap-8 mt-10">

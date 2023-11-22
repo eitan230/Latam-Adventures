@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.3.2",
+    "date-fns": "^2.30.0",
+    "rc-slider": "^10.4.0",
     "react": "^18.2.0",
     "react-datepicker": "^4.21.0",
     "react-dom": "^18.2.0",
@@ -23,12 +27,13 @@
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.16",
+    "daisyui": "^4.4.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss-cli": "^10.1.0",
-    "tailwindcss": "^3.3.4",
+    "tailwindcss": "^3.3.5",
     "vite": "^4.4.5"
   }
 }
